@@ -12,7 +12,7 @@ export const POST = async (req: NextRequest) => {
     // endpoint f/ asking a question to PDF file
     const body = await req.json()
 
-    const { getUser } = await getKindeServerSession()
+    const { getUser } = getKindeServerSession()
     const user: any = await getUser()
 
     const { id: userId } = user

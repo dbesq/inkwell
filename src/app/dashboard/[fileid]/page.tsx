@@ -18,7 +18,7 @@ const Page = async ({ params }: PageProps) => {
     // make database call
     //  1.  Make sure user is loggedin - if not, send to auth-callback
     const { getUser } = getKindeServerSession()
-    const user = await getUser()
+    const user: any = await getUser()
 
     if(!user || !user.id) redirect(`/auth-callback?origin=dashboard/${fileid}`)
 

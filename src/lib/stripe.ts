@@ -9,8 +9,8 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
 })
 
 export async function getUserSubscriptionPlan() {
-  const { getUser } = await getKindeServerSession()
-  const user = await getUser()
+  const { getUser } = getKindeServerSession()
+  const user: any = await getUser()
 
   if (!user.id) {
     return {
