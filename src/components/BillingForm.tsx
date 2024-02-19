@@ -4,7 +4,6 @@ import { getUserSubscriptionPlan } from "@/lib/stripe"
 import { useToast } from "./ui/use-toast"
 import { trpc } from "@/app/_trpc/client"
 import MaxWidthWrapper from "./MaxWidthWrapper"
-import { create } from "domain"
 import {
     Card,
     CardDescription,
@@ -24,19 +23,21 @@ interface BillingFormProps {
 const BillingForm = ({ subscriptionPlan }: BillingFormProps) => {
     const { toast } = useToast()
 
-    const { mutate: createStripeSession, isLoading } =
-        trpc.createStripeSession.useMutation({
-            onSuccess: ({ url }) => {
-                if (url) window.location.href = url
-                if (!url) {
-                    toast({
-                        title: 'There was a problem...',
-                        description: 'Please try again in a moment',
-                        variant: 'destructive',
-                    })
-                }
-            },
-        })
+    // Add 'isLoading' to const
+    const { mutate: createStripeSession } =
+    trpc.createStripeSession.useMutation({
+      onSuccess: ({ url }) => {
+        if (url) window.location.href = url
+        if (!url) {
+          toast({
+            title: 'There was a problem...',
+            description: 'Please try again in a moment',
+            variant: 'destructive',
+          })
+        }
+      },
+    })
+
     return (
         <MaxWidthWrapper className='max-w-5xl'>
             <form className='mt-12' onSubmit={(e) => {
@@ -51,11 +52,11 @@ const BillingForm = ({ subscriptionPlan }: BillingFormProps) => {
 
                     <CardFooter className='flex flex-col items-start space-y-2 md:flex-row md:justify-between md:space-x-0'>
                         <Button type='submit'>
-                            {
+                            {/* {
                                 isLoading ? (
                                     <Loader2 className='mr-4 h-4 w-4 animate-spin' />
                                 ) : null
-                            }
+                            } */}
                             {subscriptionPlan.isSubscribed ? 'Manage Subscription' : 'Upgrade to PRO'}
                         </Button>
 

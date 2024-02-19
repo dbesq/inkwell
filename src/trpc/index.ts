@@ -60,6 +60,8 @@ export const appRouter = router({
                 id: userId
             }
         })
+        if (!dbUser)
+        throw new TRPCError({ code: 'UNAUTHORIZED' })
 
         // Is user already subscribed?
         const subscriptionPlan = await getUserSubscriptionPlan()
