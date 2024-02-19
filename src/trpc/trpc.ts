@@ -11,7 +11,7 @@ const t = initTRPC.create()
 // Custom middleware to check authentication
 const middleware = t.middleware
 const isAuth = middleware(async (opts) => {
-    const { getUser } = getKindeServerSession()
+    const { getUser } = await getKindeServerSession()
     const user = await getUser()
 
     if(!user || !user.id) {
