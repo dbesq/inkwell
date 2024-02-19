@@ -13,7 +13,7 @@ export const POST = async (req: NextRequest) => {
     const body = await req.json()
 
     const { getUser } = await getKindeServerSession()
-    const user = await getUser()
+    const user: any = await getUser()
 
     const { id: userId } = user
 
