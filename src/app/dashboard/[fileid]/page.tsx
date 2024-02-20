@@ -13,7 +13,7 @@ interface PageProps {
 const Page = async ({ params }: PageProps) => {
     // retrieve file id - passed into page params
     const { fileid } = params
-    console.log('Line 16. dashboard/[fileid]/page.tsx-------------------------')
+    console.log('Line 16. dashboard/[fileid]/page.tsx------------------------')
     console.log(fileid)
 
 
