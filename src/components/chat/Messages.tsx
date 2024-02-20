@@ -21,8 +21,8 @@ const Messages = ({ fileId }: MessagesProps) => {
   }, {
     // w/ this function, get access to lastPage
     // nextCursor so it knows where to keep fetching
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
-    keepPreviousData: true,
+    getNextPageParam: (lastPage) => lastPage?.nextCursor,
+    // keepPreviousData: true,
   })
 
   const messages = data?.pages.flatMap((page) => page.messages)

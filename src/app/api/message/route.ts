@@ -30,6 +30,9 @@ export const POST = async (req: NextRequest) => {
         }
     })
 
+    console.log('message/route.ts********************************************')
+    console.log(file)
+
     if (!file) {
         return new Response('Not found', { status: 404 })
     }

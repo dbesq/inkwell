@@ -13,6 +13,8 @@ interface PageProps {
 const Page = async ({ params }: PageProps) => {
     // retrieve file id - passed into page params
     const { fileid } = params
+    console.log('Line 16. dashboard/[fileid]/page.tsx-------------------------')
+    console.log(fileid)
 
 
     // make database call
@@ -30,6 +32,7 @@ const Page = async ({ params }: PageProps) => {
         }
     })
 
+    console.log('dashboard/[fileid]/page.tsx-------------------------')
     console.log(file)
 
     if(!file) notFound()
